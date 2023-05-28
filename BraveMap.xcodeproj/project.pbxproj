@@ -7,18 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DCBE3A82A1BAC0600D3BE7C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCBE3A72A1BAC0600D3BE7C /* AuthManager.swift */; };
+		0DCBE3AA2A1D0E2F00D3BE7C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCBE3A92A1D0E2F00D3BE7C /* LoadingView.swift */; };
 		B30DA83E29ED7D83007C41FB /* BraveMapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA83D29ED7D83007C41FB /* BraveMapApp.swift */; };
-		B30DA84029ED7D83007C41FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA83F29ED7D83007C41FB /* ContentView.swift */; };
+		B30DA84029ED7D83007C41FB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA83F29ED7D83007C41FB /* LoginView.swift */; };
 		B30DA84229ED7D86007C41FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30DA84129ED7D86007C41FB /* Assets.xcassets */; };
 		B30DA84529ED7D86007C41FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B30DA84429ED7D86007C41FB /* Preview Assets.xcassets */; };
+		B30DA84C29ED7EA6007C41FB /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA84B29ED7EA6007C41FB /* TopView.swift */; };
+		B30DA84E29ED80C3007C41FB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA84D29ED80C3007C41FB /* DetailView.swift */; };
+		B30DA85029ED8325007C41FB /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA84F29ED8325007C41FB /* EditView.swift */; };
+		B30DA85229ED9BD6007C41FB /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA85129ED9BD6007C41FB /* TagView.swift */; };
+		B30DA8542A126FC0007C41FB /* GroupDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA8532A126FBF007C41FB /* GroupDetailView.swift */; };
+		B30DA8562A127970007C41FB /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DA8552A127970007C41FB /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DCBE3A72A1BAC0600D3BE7C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		0DCBE3A92A1D0E2F00D3BE7C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B30DA83A29ED7D83007C41FB /* BraveMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BraveMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B30DA83D29ED7D83007C41FB /* BraveMapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraveMapApp.swift; sourceTree = "<group>"; };
-		B30DA83F29ED7D83007C41FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B30DA83F29ED7D83007C41FB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B30DA84129ED7D86007C41FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B30DA84429ED7D86007C41FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B30DA84B29ED7EA6007C41FB /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		B30DA84D29ED80C3007C41FB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		B30DA84F29ED8325007C41FB /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		B30DA85129ED9BD6007C41FB /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		B30DA8532A126FBF007C41FB /* GroupDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailView.swift; sourceTree = "<group>"; };
+		B30DA8552A127970007C41FB /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +68,17 @@
 			isa = PBXGroup;
 			children = (
 				B30DA83D29ED7D83007C41FB /* BraveMapApp.swift */,
-				B30DA83F29ED7D83007C41FB /* ContentView.swift */,
+				B30DA83F29ED7D83007C41FB /* LoginView.swift */,
+				B30DA84B29ED7EA6007C41FB /* TopView.swift */,
+				B30DA8532A126FBF007C41FB /* GroupDetailView.swift */,
+				B30DA84D29ED80C3007C41FB /* DetailView.swift */,
+				B30DA84F29ED8325007C41FB /* EditView.swift */,
+				B30DA85129ED9BD6007C41FB /* TagView.swift */,
+				B30DA8552A127970007C41FB /* SearchView.swift */,
 				B30DA84129ED7D86007C41FB /* Assets.xcassets */,
 				B30DA84329ED7D86007C41FB /* Preview Content */,
+				0DCBE3A72A1BAC0600D3BE7C /* AuthManager.swift */,
+				0DCBE3A92A1D0E2F00D3BE7C /* LoadingView.swift */,
 			);
 			path = BraveMap;
 			sourceTree = "<group>";
@@ -137,8 +161,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B30DA84029ED7D83007C41FB /* ContentView.swift in Sources */,
+				B30DA84029ED7D83007C41FB /* LoginView.swift in Sources */,
+				0DCBE3A82A1BAC0600D3BE7C /* AuthManager.swift in Sources */,
+				B30DA85029ED8325007C41FB /* EditView.swift in Sources */,
+				0DCBE3AA2A1D0E2F00D3BE7C /* LoadingView.swift in Sources */,
+				B30DA84E29ED80C3007C41FB /* DetailView.swift in Sources */,
+				B30DA8542A126FC0007C41FB /* GroupDetailView.swift in Sources */,
+				B30DA8562A127970007C41FB /* SearchView.swift in Sources */,
+				B30DA84C29ED7EA6007C41FB /* TopView.swift in Sources */,
 				B30DA83E29ED7D83007C41FB /* BraveMapApp.swift in Sources */,
+				B30DA85229ED9BD6007C41FB /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
