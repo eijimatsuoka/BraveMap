@@ -92,16 +92,16 @@ struct TopProfile: View {
                     
                    }
                     Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Text("ログアウト")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.red)
-                                .padding(.bottom)
-                            }
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Text("ログアウト")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.red)
+                        .padding(.bottom)
+                    }
 
+                }
             }
     }
-}
 }
