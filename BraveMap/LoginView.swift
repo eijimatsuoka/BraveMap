@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
+    
     @State var employeeId : String = ""
-    @State var password : String = ""
-    @State var shouldNavigate = false
     
     var body: some View {
         NavigationView {
@@ -33,44 +32,22 @@ struct LoginView: View {
                 Text("パスワード")
                     .font(.title)
                     .multilineTextAlignment(.center)
-                TextField("", text: $password)
+                TextField("", text: .constant(""))
                     .font(.title)
                     .border(Color.gray, width: 3)
                     .padding()
                 }
                 Divider()
                 Spacer()
-                Button(action: {
-                    if validateLogin() {
-                        shouldNavigate = true
-                        AuthManager.shared.saveLoginInfo(employeeId: employeeId, password: password)// TODO: このメソッドの前にloginメソッド 　trueだったらこのメソッド
-                    } else {
-                        // TODO: ログインに失敗した場合の処理　アラートとか
-                    }
-                }) {
-                    VStack {
-                        Text("ログイン")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.blue)
-                            .padding(.bottom)
-                        TextField("", text: $employeeId)
-                            .font(.title)
-                            .border(Color.gray, width: 3)
-                            .opacity(0)
-                            .disabled(true)
-                    }
+                NavigationLink(destination: TopView(employeeId: $employeeId)) {
+                    Text("ログイン")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.blue)
+                        .padding(.bottom)
                 }
-                .fullScreenCover(isPresented: $shouldNavigate, content: {
-                    TopView(employeeId: $employeeId)
-                })
             }
         }
-        
-    }
-    private func validateLogin() -> Bool{
-        // TODO: ログインのバリデーションロジックを実装 入力判定とか　ワンチャンサーバーサイドになげる
-        return true
     }
 }
 
