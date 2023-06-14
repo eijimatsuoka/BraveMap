@@ -12,20 +12,25 @@ struct DetailView: View {
     @Binding var employeeId : String
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-
-            VStack() {
-                HStack(alignment: .center) { DetailProfile(employeeId: $employeeId) }
-                HStack(alignment: .center) { DetailTag(employeeId: $employeeId) }
-                HStack(alignment: .center) { Jiko(employeeId: $employeeId) }
-                Spacer()
-                NavigationLink(destination: EditView(employeeId: $employeeId)) {
-                  Text("編集ボタン")
-                    .font(.title)
-                    .fontWeight(.bold)
-//                        .foregroundColor(Color.blue)
+        ScrollView {
+            VStack {
+                VStack() {
+                    HStack(alignment: .center) { DetailProfile(employeeId: $employeeId) }
+                    HStack(alignment: .center) { DetailTag(employeeId: $employeeId) }
+                    HStack(alignment: .center) { Jiko() }
+                    HStack(alignment: .center) { DetailImage() }
+                    Spacer()
+                    NavigationLink(destination: EditView(employeeId: $employeeId)) {
+                      Text("編集ボタン")
+                        .font(.title)
+                        .fontWeight(.bold)
+    //                        .foregroundColor(Color.blue)
+                    }
+                    .navigationBarTitle("詳細画面", displayMode: .inline)
                 }
-                .navigationBarTitle("詳細画面", displayMode: .inline)
             }
+        }
+
 //       . navigationBarHidden(true)
     }
 }
@@ -40,8 +45,7 @@ struct DetailProfile: View {
 
             Text("所属 S1G")
                 .font(.body)
-                .background(Color.yellow)
-            Text("嗚呼島 涼斗")
+            Text("名字 名前")
                 .font(.title)
                 .padding(.vertical, 10)
                 .background(Color.white)
@@ -53,19 +57,39 @@ struct DetailProfile: View {
 struct DetailTag: View {
     @Binding var employeeId : String
     var body: some View {
-        Text("保存済みのタグ:〇〇,〇〇,〇〇,〇〇,〇〇,〇〇〇〇,〇〇,〇〇,〇〇,〇〇,〇〇,〇〇,〇〇,〇〇,〇〇,〇〇")
+        Text("保存済みのタグ\nJava,Spribgboot,Swift,iOS,\nサッカー,スノーボード,野球,小鹿の囲い")
             .font(.body)
             .padding(.vertical, 10)
-            .background(Color.yellow)
     }
 }
 
 struct Jiko: View {
-    @Binding var employeeId : String
     var body: some View {
-        Text("自己紹介")
+        Text("松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！松岡です。最近〜をよくしてます。興味ある人いたら声かけてください！")
             .font(.body)
             .padding(.vertical, 10)
-            .background(Color.yellow)
+    }
+}
+
+struct DetailImage: View {
+    var body: some View {
+        Image("DetailImage1")
+            .resizable()
+            .frame(width: 100, height: 100)
+        Image("DetailImage2")
+            .resizable()
+            .frame(width: 100, height: 100)
+        Image("DetailImage3")
+            .resizable()
+            .frame(width: 100, height: 100)
+        Image("DetailImage1")
+            .resizable()
+            .frame(width: 100, height: 100)
+        Image("DetailImage2")
+            .resizable()
+            .frame(width: 100, height: 100)
+        Image("DetailImage3")
+            .resizable()
+            .frame(width: 100, height: 100)
     }
 }
