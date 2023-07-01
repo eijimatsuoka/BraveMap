@@ -10,98 +10,259 @@ import SwiftUI
 
 struct TopView: View {
     @Binding var employeeId : String
+    // offset変数でメニューを表示・非表示するためのオフセットを保持
+    @State private var offset = CGFloat.zero
+    @State private var closeOffset = CGFloat.zero
+    @State private var openOffset = CGFloat.zero
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-
-            VStack() {
-
-                HStack(alignment: .center) { TopProfile(employeeId: $employeeId) }
-                NavigationLink(destination: SearchView(employeeId: $employeeId)) {
-                    Text("検索")
-                        .font(.title)
-                        .background(Color.red)
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                VStack() {
+                    // ヘッダー     TODO: ヘッダー専用のビューを作成
+                    HStack(){
+                        Image(systemName: "line.horizontal.3")
+                            .font(.title)
+                            .onTapGesture {
+                                self.offset = self.openOffset
+                            }
+                        Spacer()
+                        Text("BraveMap")
+                            .font(.title)
+                            .padding(.trailing, 30)
+                        Spacer()
+                    }
+                    .padding()
+//                    HeaderView()
+                    .frame(height: 50)
+                    
+                    // メインコンテンツ
+                    TopMyProfile()
+                        .frame(maxWidth:.infinity, maxHeight: 100)
+                    Divider()
+                    TopProfile()
+                        .frame(maxWidth:.infinity, maxHeight: .infinity)
+                    Spacer()
+                    FooterView(employeeId: $employeeId)
+                        .frame(height: 50, alignment: .bottom)
                 }
-                    .frame(maxWidth:.infinity, maxHeight: .infinity)
-                    .border(Color.orange, width: 5)
-                    .navigationBarTitle("Top", displayMode: .inline)
-                
+                .navigationBarHidden(true)
+                .background(Color.white)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                // スライドメニューがでてきたらメインコンテンツをグレイアウト
+                Color.gray.opacity(
+                    Double((self.closeOffset - self.offset)/self.closeOffset) - 0.4
+                )
+                //グレイアウトされた領域をタップでスライドメニューを閉じる
+                .onTapGesture {
+                    self.offset = self.closeOffset
+                }
+                // スライドメニュー
+                MenuView(employeeId: $employeeId)
+                    .background(Color.white)
+                    .frame(width: geometry.size.width * 0.7)
+                    // 最初に画面のオフセットの値をスライドメニュー分マイナス
+                    .onAppear(perform: {
+                        self.offset = geometry.size.width * -1
+                        self.closeOffset = self.offset
+                        self.openOffset = .zero
+                    })
+                    .offset(x: self.offset)
+                    .animation(.default)
             }
-       
+            .gesture(DragGesture(minimumDistance: 5)
+                .onChanged{ value in
+                    if (self.offset < self.openOffset) {
+                        self.offset = self.closeOffset + value.translation.width
+                    }
+                }
+                .onEnded { value in
+                    // スワイプ終了位置が開始位置よりも右にあればメニューを開く
+                    if (value.location.x > value.startLocation.x) {
+                        self.offset = self.openOffset
+                    } else {
+                        self.offset = self.closeOffset
+                    }
+                }
+            )
+        }
+    }
+}
+
+struct TopMyProfile: View {
+    var body: some View {
+        VStack {
+            HStack(alignment: .top, spacing: 20) {
+                Image("TopImage1")
+                    .resizable()
+                    .frame(width: 100, height: 100, alignment: .leading)
+                VStack(alignment: .leading) {
+                    HStack{
+                        Text("飯島 伶斗")
+                            .font(.title2)
+                        Text("システム第2グループ")
+                            .font(.callout)
+                    }
+                    HStack{
+                        Image(systemName: "tag")
+                        Text("サッカー・野球・バスケ")
+                    }
+                    .font(.subheadline)
+                    HStack{
+                        Image(systemName: "pc")
+                        Text("Java・Swift")
+                    }
+                    .font(.subheadline)
+                    HStack{
+                        Image(systemName: "square.and.pencil")
+                        Text("よろしくお願いします")
+                    }
+                    .font(.subheadline)
+                }
+                Spacer()
+            }
+        }
     }
 }
 
 struct TopProfile: View {
-    @Binding var employeeId : String
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    let sort = ["グループ", "名前", "更新"]
+    @State private var selection = 0
     var body: some View {
-
-            NavigationLink(destination: GroupDtailView(employeeId: $employeeId)) {
-                
-                VStack(spacing: 10) {
-                    
-                    Group {
-                        
-                        Text("S1G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
-                        
-                        Text("S2G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
-                        
-                        Text("S3G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
+        VStack() {
+            // ソート
+            HStack {
+                Spacer()
+                Picker(selection: $selection, label: Text("ソート")) {
+                    ForEach(0 ..< sort.count) { num in
+                        Text(self.sort[num])
                     }
-                    Group {
-                        Text("S4G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
-                    
-                    
-                        Text("S5G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
-                        
-                        Text("S6G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
-                    }
-                    Group {
-                        Text("S7G")
-                            .font(.title)
-                            .background(Color.yellow)
-                        Spacer()
-                        Divider()
-                        
-                        Text("S8G")
-                            .font(.title)
-                            .background(Color.yellow)
-                    
-                   }
-                    Button(action: {
-                                self.presentationMode.wrappedValue.dismiss()
-                            }) {
-                                Text("ログアウト")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.red)
-                                .padding(.bottom)
-                            }
-
+                }
             }
+            // プロフィール一覧
+            ScrollView (.vertical, showsIndicators: true) {
+                VStack {
+                    ForEach(0..<5){_ in
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage5")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            VStack(alignment: .leading) {
+                                HStack{
+                                    Text("今井 啓之")
+                                        .font(.title2)
+                                    Text("人事部")
+                                        .font(.callout)
+                                }
+                                HStack{
+                                    Image(systemName: "tag")
+                                    Text("サッカー・野球・バスケ")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "pc")
+                                    Text("Java・Swift")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "square.and.pencil")
+                                    Text("よろしくお願いします")
+                                }
+                                .font(.subheadline)
+                            }
+                            Spacer()
+                        }
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage4")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            VStack(alignment: .leading) {
+                                HStack{
+                                    Text("松岡 栄志")
+                                        .font(.title2)
+                                    Text("システム第2グループ")
+                                        .font(.callout)
+                                }
+                                HStack{
+                                    Image(systemName: "tag")
+                                    Text("サッカー・野球・バスケ")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "pc")
+                                    Text("Java・Swift")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "square.and.pencil")
+                                    Text("よろしくお願いします")
+                                }
+                                .font(.subheadline)
+                            }
+                            Spacer()
+                        }
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage2")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            VStack(alignment: .leading) {
+                                HStack{
+                                    Text("奥田 聡")
+                                        .font(.title2)
+                                    Text("システム第5グループ")
+                                        .font(.callout)
+                                }
+                                HStack{
+                                    Image(systemName: "tag")
+                                    Text("サッカー・野球・バスケ")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "pc")
+                                    Text("Java・Swift")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "square.and.pencil")
+                                    Text("よろしくお願いします")
+                                }
+                                .font(.subheadline)
+                            }
+                            Spacer()
+                        }
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage3")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            VStack(alignment: .leading) {
+                                HStack{
+                                    Text("深草 響子")
+                                        .font(.title2)
+                                    Text("システム第2グループ")
+                                        .font(.callout)
+                                }
+                                HStack{
+                                    Image(systemName: "tag")
+                                    Text("サッカー・野球・バスケ")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "pc")
+                                    Text("Java・Swift")
+                                }
+                                .font(.subheadline)
+                                HStack{
+                                    Image(systemName: "square.and.pencil")
+                                    Text("よろしくお願いします")
+                                }
+                                .font(.subheadline)
+                            }
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-}
+
