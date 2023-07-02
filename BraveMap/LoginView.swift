@@ -16,7 +16,7 @@ struct LoginView: View {
             VStack(spacing: 10) {
                 Text("BraveMap")
                     .font(.title)
-                    .fontWeight(.bold)
+//                    .fontWeight(.bold)
                     .padding()
                 Spacer()
                 Divider()
