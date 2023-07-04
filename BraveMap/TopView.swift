@@ -10,82 +10,14 @@ import SwiftUI
 
 struct TopView: View {
     @Binding var employeeId: String
-    @State private var offset = CGFloat.zero
-    @State private var closeOffset = CGFloat.zero
-    @State private var openOffset = CGFloat.zero
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .leading) {
-                VStack() {
-                    // ヘッダー
-                    HStack() {
-                        Image(systemName: "line.horizontal.3")
-                            .font(.title)
-                            .onTapGesture {
-                                self.offset = self.openOffset
-                            }
-                        Spacer()
-                        Text("BraveMap")
-                            .font(.title)
-                            .padding(.trailing, 30)
-                        Spacer()
-                    }
-                    .padding()
-                    .frame(height: 50)
-                    
-                    // メインコンテンツ
-                    TopMyProfile()
-                        .frame(maxWidth: .infinity, maxHeight: 100)
-                    Divider()
-                    TopProfile(employeeId: $employeeId)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    //フッター
-                    Spacer()
-                    FooterView(employeeId: $employeeId)
-                        .frame(height: 50, alignment: .bottom)
-                }
-                .navigationBarHidden(true)
-                .background(Color.white)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                .disabled(offset != closeOffset) // メニューが表示されている時のみ非活性にする
-                
-                if offset != closeOffset {
-                    // メニューが表示されている時のみグレーアウトさせる
-                    Color.gray.opacity(
-                        Double((closeOffset - offset) / closeOffset) - 0.4
-                    )
-                    .onTapGesture {
-                        self.offset = self.closeOffset
-                    }
-                }
-                
-                MenuView(employeeId: $employeeId)
-                    .background(Color.white)
-                    .frame(width: geometry.size.width * 0.7)
-                    .onAppear(perform: {
-                        self.offset = geometry.size.width * -1
-                        self.closeOffset = self.offset
-                        self.openOffset = .zero
-                    })
-                    .offset(x: self.offset)
-                    .animation(.default)
-            }
-            .gesture(DragGesture(minimumDistance: 50)
-                .onChanged { value in
-                    if self.offset < self.openOffset {
-                        self.offset = self.closeOffset + value.translation.width
-                    }
-                }
-                .onEnded { value in
-                    if value.location.x > value.startLocation.x {
-                        self.offset = self.openOffset
-                    } else {
-                        self.offset = self.closeOffset
-                    }
-                }
-            )
+        VStack{
+            TopMyProfile()
+                .frame(maxWidth: .infinity, maxHeight: 100)
+            Divider()
+            TopProfile(employeeId: $employeeId)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
@@ -145,12 +77,11 @@ struct TopProfile: View {
             ScrollView (.vertical, showsIndicators: true) {
                 VStack {
                     ForEach(0..<5){_ in
-                        NavigationLink(destination: DetailView(employeeId: $employeeId)) {
-                            HStack(alignment: .top, spacing: 20) {
-                                
-                                Image("TopImage5")
-                                    .resizable()
-                                    .frame(width: 100, height: 100, alignment: .leading)
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage5")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            NavigationLink(destination: DetailView(employeeId: $employeeId)) {
                                 VStack(alignment: .leading) {
                                     HStack{
                                         Text("今井 啓之")
@@ -178,11 +109,11 @@ struct TopProfile: View {
                             }
                             .foregroundColor(.black)
                         }
-                        NavigationLink(destination: DetailView(employeeId: $employeeId)) {
-                            HStack(alignment: .top, spacing: 20) {
-                                Image("TopImage4")
-                                    .resizable()
-                                    .frame(width: 100, height: 100, alignment: .leading)
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage4")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            NavigationLink(destination: DetailView(employeeId: $employeeId)) {
                                 VStack(alignment: .leading) {
                                     HStack{
                                         Text("松岡 栄志")
@@ -210,11 +141,11 @@ struct TopProfile: View {
                             }
                             .foregroundColor(.black)
                         }
-                        NavigationLink(destination: DetailView(employeeId: $employeeId)) {
-                            HStack(alignment: .top, spacing: 20) {
-                                Image("TopImage2")
-                                    .resizable()
-                                    .frame(width: 100, height: 100, alignment: .leading)
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage2")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            NavigationLink(destination: DetailView(employeeId: $employeeId)) {
                                 VStack(alignment: .leading) {
                                     HStack{
                                         Text("奥田 聡")
@@ -242,11 +173,11 @@ struct TopProfile: View {
                             }
                             .foregroundColor(.black)
                         }
-                        NavigationLink(destination: DetailView(employeeId: $employeeId)) {
-                            HStack(alignment: .top, spacing: 20) {
-                                Image("TopImage3")
-                                    .resizable()
-                                    .frame(width: 100, height: 100, alignment: .leading)
+                        HStack(alignment: .top, spacing: 20) {
+                            Image("TopImage3")
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .leading)
+                            NavigationLink(destination: DetailView(employeeId: $employeeId)) {
                                 VStack(alignment: .leading) {
                                     HStack{
                                         Text("小鹿 里奈")

@@ -39,7 +39,7 @@ struct LoginView: View {
                 }
                 Divider()
                 Spacer()
-                NavigationLink(destination: TopView(employeeId: $employeeId)) {
+                NavigationLink(destination: MainView(employeeId: $employeeId)) {
                     Text("ログイン")
                         .font(.title)
                         .fontWeight(.bold)

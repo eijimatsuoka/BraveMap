@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MenuView: View {
         @Binding var employeeId : String
-//        @Binding var isMenuVisible: Bool
     var body: some View {
         VStack(alignment: .leading) {
             Image("TopImage1")
@@ -31,6 +30,7 @@ struct MenuView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.black)
                 }
+                Divider()
                 NavigationLink(destination: TopView(employeeId: $employeeId)) {
                     HStack {
                         Image(systemName: "fork.knife")
@@ -39,6 +39,7 @@ struct MenuView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.black)
                 }
+                Divider()
                 NavigationLink(destination: TopView(employeeId: $employeeId)) {
                     HStack {
                         Image(systemName: "book")
@@ -47,6 +48,7 @@ struct MenuView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(.black)
                 }
+                Divider()
             }
             Divider()
             NavigationLink(destination: TopView(employeeId: $employeeId)) {
