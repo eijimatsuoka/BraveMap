@@ -22,7 +22,7 @@ struct MenuView: View {
                 .font(.caption)
             Divider()
             ScrollView (.vertical, showsIndicators: true) {
-                NavigationLink(destination: TopView(employeeId: $employeeId)) {
+                NavigationLink(destination: TagView(employeeId: $employeeId)) {
                     HStack {
                         Image(systemName: "tram")
                         Text("交通費精算")
@@ -31,7 +31,7 @@ struct MenuView: View {
                     .foregroundColor(.black)
                 }
                 Divider()
-                NavigationLink(destination: TopView(employeeId: $employeeId)) {
+                NavigationLink(destination: TagView(employeeId: $employeeId)) {
                     HStack {
                         Image(systemName: "fork.knife")
                         Text("グルメマップ")
@@ -40,7 +40,7 @@ struct MenuView: View {
                     .foregroundColor(.black)
                 }
                 Divider()
-                NavigationLink(destination: TopView(employeeId: $employeeId)) {
+                NavigationLink(destination: TagView(employeeId: $employeeId)) {
                     HStack {
                         Image(systemName: "book")
                         Text("図書管理")
@@ -51,7 +51,7 @@ struct MenuView: View {
                 Divider()
             }
             Divider()
-            NavigationLink(destination: TopView(employeeId: $employeeId)) {
+            NavigationLink(destination: TagView(employeeId: $employeeId)) {
                 HStack {
                     Image(systemName: "gearshape")
                     Text("設定")

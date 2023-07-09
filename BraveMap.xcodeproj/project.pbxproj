@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D8A72A92A5AE7A00056A54D /* MyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8A72A82A5AE7A00056A54D /* MyDetailView.swift */; };
 		0DBBDD782A5475F5005BFC60 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBDD772A5475F5005BFC60 /* MainView.swift */; };
 		0DE2CA562A42096100A43273 /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CA552A42096100A43273 /* FooterView.swift */; };
 		0DE2CA582A4210EC00A43273 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE2CA572A4210EC00A43273 /* HeaderView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D8A72A82A5AE7A00056A54D /* MyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDetailView.swift; sourceTree = "<group>"; };
 		0DBBDD772A5475F5005BFC60 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0DE2CA552A42096100A43273 /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		0DE2CA572A4210EC00A43273 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				B30DA83D29ED7D83007C41FB /* BraveMapApp.swift */,
 				B30DA83F29ED7D83007C41FB /* ContentView.swift */,
 				B3C18C282A38CA5700278D14 /* DetailView.swift */,
+				0D8A72A82A5AE7A00056A54D /* MyDetailView.swift */,
 				B3C18C2A2A38CA5700278D14 /* EditView.swift */,
 				B3C18C292A38CA5700278D14 /* GroupDetailView.swift */,
 				B3C18C2B2A38CA5700278D14 /* LoginView.swift */,
@@ -181,6 +184,7 @@
 				B3C18C332A38CA6500278D14 /* TagView.swift in Sources */,
 				0DE2CA582A4210EC00A43273 /* HeaderView.swift in Sources */,
 				B30DA83E29ED7D83007C41FB /* BraveMapApp.swift in Sources */,
+				0D8A72A92A5AE7A00056A54D /* MyDetailView.swift in Sources */,
 				B3C18C352A38CA6500278D14 /* TopView.swift in Sources */,
 				B3C18C2D2A38CA5800278D14 /* GroupDetailView.swift in Sources */,
 			);
